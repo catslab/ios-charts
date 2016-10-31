@@ -723,13 +723,13 @@ public class ChartViewBase: UIView, ChartDataProvider, ChartAnimatorDelegate
         if (opaque || !transparent)
         {
             // Background color may be partially transparent, we must fill with white if we want to output an opaque image
-            CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
-            CGContextFillRect(context, rect)
+            CGContextSetFillColorWithColor(context!, UIColor.whiteColor().CGColor)
+            CGContextFillRect(context!, rect)
             
             if (self.backgroundColor !== nil)
             {
-                CGContextSetFillColorWithColor(context, self.backgroundColor?.CGColor)
-                CGContextFillRect(context, rect)
+                CGContextSetFillColorWithColor(context!, (self.backgroundColor?.CGColor)!)
+                CGContextFillRect(context!, rect)
             }
         }
         
@@ -742,7 +742,7 @@ public class ChartViewBase: UIView, ChartDataProvider, ChartAnimatorDelegate
         
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
     
     public enum ImageFormat
@@ -913,7 +913,7 @@ public class ChartViewBase: UIView, ChartDataProvider, ChartAnimatorDelegate
     {
         if (!_interceptTouchEvents)
         {
-            super.touchesCancelled(touches, withEvent: event)
+            super.touchesCancelled(touches!, withEvent: event)
         }
     }
 }
